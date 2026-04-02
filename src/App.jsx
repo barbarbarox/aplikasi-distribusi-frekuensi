@@ -48,7 +48,7 @@ export default function App() {
     setIsExporting(true);
     showToast('Sedang membuat PDF...', 'info');
     try {
-      await exportToPDF('results-content', 'distribusi_frekuensi.pdf');
+      await exportToPDF(result, 'distribusi_frekuensi.pdf');
       showToast('PDF berhasil diunduh!', 'success');
     } catch (err) {
       showToast('Gagal export PDF: ' + err.message, 'error');
