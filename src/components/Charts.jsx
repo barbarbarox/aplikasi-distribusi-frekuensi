@@ -31,6 +31,120 @@ const CHART_TABS = [
   { id: 'ogive', label: '📉 Ogive' },
 ];
 
+/* ─── Penjelasan per grafik ─── */
+function HistogramInfo() {
+  return (
+    <div className="chart-info-box chart-info-blue">
+      <div className="chart-info-header">
+        <span className="chart-info-icon">📊</span>
+        <span className="chart-info-title">Apa itu Histogram?</span>
+      </div>
+      <p className="chart-info-body">
+        Histogram adalah diagram batang yang digunakan untuk menyajikan distribusi frekuensi data
+        berkelompok. Berbeda dengan diagram batang biasa, pada histogram <strong>batang-batang
+        saling bersentuhan</strong> (tidak ada jarak) karena setiap batang mewakili satu kelas/interval
+        yang berurutan dan kontinu.
+      </p>
+      <ul className="chart-info-list">
+        <li>Sumbu horizontal (<em>x</em>) mewakili <strong>tepi kelas</strong> (batas nyata kelas)</li>
+        <li>Sumbu vertikal (<em>y</em>) mewakili <strong>frekuensi</strong> setiap kelas</li>
+        <li>Luas setiap batang sebanding dengan frekuensi kelas tersebut</li>
+        <li>Cocok untuk melihat bentuk distribusi data (simetri, menceng kanan/kiri, dll.)</li>
+      </ul>
+    </div>
+  );
+}
+
+function PolygonInfo() {
+  return (
+    <div className="chart-info-box chart-info-purple">
+      <div className="chart-info-header">
+        <span className="chart-info-icon">📈</span>
+        <span className="chart-info-title">Apa itu Poligon Frekuensi?</span>
+      </div>
+      <p className="chart-info-body">
+        <strong>Poligon Frekuensi</strong> menggunakan segmen garis yang terhubung ke titik-titik yang
+        terletak tepat di atas <strong>nilai titik tengah kelas</strong>. Ketinggian dari titik-titik
+        tersebut sesuai dengan frekuensi kelas masing-masing, dan segmen garis <strong>diperluas ke
+        kanan dan ke kiri</strong> sehingga grafik dimulai dan berakhir pada sumbu horizontal
+        (frekuensi = 0).
+      </p>
+      <ul className="chart-info-list">
+        <li>Sumbu horizontal (<em>x</em>) mewakili <strong>titik tengah kelas</strong> (midpoint)</li>
+        <li>Sumbu vertikal (<em>y</em>) mewakili <strong>frekuensi</strong> setiap kelas</li>
+        <li>Titik tambahan di kiri dan kanan dengan frekuensi 0 memastikan grafik "tertutup" ke sumbu-x</li>
+        <li>Berguna untuk membandingkan dua atau lebih distribusi data dalam satu grafik</li>
+      </ul>
+      <div className="chart-info-note">
+        💡 <strong>Catatan:</strong> Luas area di bawah Poligon Frekuensi sama dengan luas
+        keseluruhan Histogram — keduanya merepresentasikan total frekuensi data yang sama.
+      </div>
+    </div>
+  );
+}
+
+function OgiveInfo({ result }) {
+  const { cumulativeLess, classes } = result;
+
+  // Cari contoh pembacaan: nilai kumulatif mendekati 68% dari total, atau gunakan data nyata
+  const totalFreq = result.totalFrequency;
+  // Ambil titik tengah dari daftar kumulatif kurang dari sebagai contoh pembacaan
+  const midIdx = Math.floor(cumulativeLess.length / 2);
+  const examplePoint = cumulativeLess[midIdx] || cumulativeLess[cumulativeLess.length - 1];
+
+  return (
+    <div className="chart-info-box chart-info-emerald">
+      <div className="chart-info-header">
+        <span className="chart-info-icon">📉</span>
+        <span className="chart-info-title">Apa itu Ogive?</span>
+      </div>
+      <p className="chart-info-body">
+        <strong>Ogive</strong> adalah grafik garis yang menggambarkan <strong>frekuensi
+        kumulatif</strong>, seperti daftar distribusi frekuensi kumulatif. Batas-batas kelas
+        dihubungkan oleh segmen garis yang dimulai dari <strong>batas bawah kelas pertama</strong> dan
+        berakhir pada <strong>batas atas kelas terakhir</strong>. Ogive berguna untuk menentukan
+        jumlah nilai di bawah nilai tertentu.
+      </p>
+      <ul className="chart-info-list">
+        <li>
+          <strong>Ogive Positif (Kurang Dari):</strong> menghitung berapa banyak data yang
+          bernilai <em>kurang dari</em> tepi atas kelas — kurva naik dari kiri ke kanan
+        </li>
+        <li>
+          <strong>Ogive Negatif (Lebih Dari):</strong> menghitung berapa banyak data yang
+          bernilai <em>lebih dari atau sama dengan</em> tepi bawah kelas — kurva turun dari kiri ke kanan
+        </li>
+        <li>Perpotongan kedua kurva menunjukkan estimasi <strong>nilai median</strong> distribusi</li>
+      </ul>
+
+      {/* Contoh pembacaan dinamis berdasarkan data nyata */}
+      <div className="chart-info-example">
+        <div className="chart-info-example-header">
+          <span>📖</span> Contoh Pembacaan Ogive dari Data Ini
+        </div>
+        <p>
+          Berdasarkan Ogive Positif (Kurang Dari), terdapat{' '}
+          <strong className="highlight-val">{examplePoint.cumFrequency} data</strong> yang
+          memiliki nilai <strong>kurang dari {examplePoint.edge}</strong>.
+          {examplePoint.cumFrequency === totalFreq && (
+            <span> (seluruh data berada di bawah batas atas kelas terakhir)</span>
+          )}
+        </p>
+        <p style={{ marginTop: '6px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          Lihat pada grafik di atas: posisi <strong>{examplePoint.edge}</strong> pada sumbu-x
+          berkorespondensi dengan frekuensi kumulatif{' '}
+          <strong>{examplePoint.cumFrequency}</strong> pada sumbu-y.
+        </p>
+      </div>
+
+      <div className="chart-info-note">
+        💡 <strong>Tips:</strong> Arahkan kursor ke titik pada grafik untuk melihat nilai frekuensi
+        kumulatif secara tepat pada setiap batas kelas.
+      </div>
+    </div>
+  );
+}
+
 export default function Charts({ result }) {
   const [activeChart, setActiveChart] = useState('histogram');
 
@@ -368,6 +482,13 @@ export default function Charts({ result }) {
         {activeChart === 'ogive' && (
           <Line data={ogiveData} options={ogiveOptions} />
         )}
+      </div>
+
+      {/* Penjelasan per Grafik */}
+      <div className="chart-explanation fade-in" key={activeChart}>
+        {activeChart === 'histogram' && <HistogramInfo />}
+        {activeChart === 'polygon' && <PolygonInfo />}
+        {activeChart === 'ogive' && <OgiveInfo result={result} />}
       </div>
     </div>
   );

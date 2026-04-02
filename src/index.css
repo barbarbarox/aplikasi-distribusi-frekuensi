@@ -758,6 +758,157 @@ body {
   margin-top: 12px;
 }
 
+/* ===== CHART EXPLANATION PANEL ===== */
+.chart-explanation {
+  margin-top: 20px;
+}
+
+.chart-info-box {
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-info-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+/* Blue variant — Histogram */
+.chart-info-blue {
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.chart-info-blue::before {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), transparent);
+}
+.chart-info-blue .chart-info-title { color: var(--accent-blue); }
+.chart-info-blue .chart-info-icon { background: rgba(59, 130, 246, 0.15); }
+
+/* Purple variant — Poligon */
+.chart-info-purple {
+  background: rgba(139, 92, 246, 0.06);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+.chart-info-purple::before {
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.6), transparent);
+}
+.chart-info-purple .chart-info-title { color: var(--accent-purple); }
+.chart-info-purple .chart-info-icon { background: rgba(139, 92, 246, 0.15); }
+
+/* Emerald variant — Ogive */
+.chart-info-emerald {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.chart-info-emerald::before {
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.6), transparent);
+}
+.chart-info-emerald .chart-info-title { color: var(--accent-emerald); }
+.chart-info-emerald .chart-info-icon { background: rgba(16, 185, 129, 0.15); }
+
+.chart-info-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.chart-info-icon {
+  font-size: 1rem;
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.chart-info-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.chart-info-body {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.chart-info-body strong {
+  color: var(--text-primary);
+}
+.chart-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.chart-info-list li {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+.chart-info-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.chart-info-list strong {
+  color: var(--text-primary);
+}
+.chart-info-note {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+.chart-info-note strong {
+  color: var(--text-secondary);
+}
+
+/* Contoh pembacaan ogive */
+.chart-info-example {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin: 14px 0 14px;
+}
+.chart-info-example-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.chart-info-example p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.chart-info-example .highlight-val {
+  color: var(--accent-emerald);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 /* === Print content target === */
 #print-content .card {
   break-inside: avoid;
