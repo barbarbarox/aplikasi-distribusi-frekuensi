@@ -931,3 +931,1086 @@ body {
 #print-content .card {
   break-inside: avoid;
 }
+
+/* ======================================================
+   APP NAVIGATION BAR
+   ====================================================== */
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.app-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  gap: 16px;
+}
+
+.app-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.app-nav-logo {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+}
+
+.app-nav-title {
+  font-size: 1rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.3px;
+}
+
+.app-nav-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.app-nav-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.app-nav-tab:hover {
+  color: var(--text-primary);
+}
+
+.app-nav-tab.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.app-nav-tab-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.app-nav-tab-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  z-index: -1;
+}
+
+@media (max-width: 480px) {
+  .app-nav-title { display: none; }
+  .app-nav-tab-label { display: none; }
+  .app-nav-tab { padding: 8px 12px; }
+}
+
+/* ======================================================
+   FISIKA STATISTIK — PHYSICS HEADER
+   ====================================================== */
+.physics-header {
+  background: linear-gradient(135deg, rgba(8, 12, 24, 0.95), rgba(15, 8, 30, 0.95));
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.physics-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.physics-header-badge {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: var(--accent-purple);
+}
+
+.physics-title {
+  background: linear-gradient(135deg, #a78bfa, #ec4899, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.physics-header-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.phys-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 28px;
+}
+
+.phys-stat-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Fira Code', monospace;
+}
+
+.phys-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+.phys-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* ======================================================
+   PHYSICS CARD BASE
+   ====================================================== */
+.physics-card {
+  background: rgba(15, 18, 36, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.physics-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), rgba(6, 182, 212, 0.4), transparent);
+}
+
+.physics-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #a78bfa;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-top: 4px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.physics-desc {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.physics-desc code {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+}
+
+/* ======================================================
+   BENTO GRID
+   ====================================================== */
+.bento-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .bento-grid-3 { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .bento-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ======================================================
+   PHYSICS INPUTS
+   ====================================================== */
+.physics-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.physics-input-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .physics-input-grid,
+  .physics-input-grid-3 { grid-template-columns: 1fr; }
+}
+
+.physics-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.physics-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}
+
+.physics-label-hint {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.physics-input {
+  width: 100%;
+  background: rgba(10, 14, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.physics-input:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  background: rgba(15, 10, 35, 0.9);
+}
+
+.physics-input::placeholder { color: var(--text-muted); }
+
+.physics-input-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ======================================================
+   PHYSICS ALERTS / BANNERS
+   ====================================================== */
+.physics-error {
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  color: #f87171;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.physics-warning-box {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.physics-info-banner {
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ======================================================
+   PHYSICS CONTEXT BOX
+   ====================================================== */
+.physics-context-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+
+.physics-context-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+.physics-context-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 700px) {
+  .physics-context-grid { grid-template-columns: 1fr; }
+}
+
+.physics-context-grid > div {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.physics-context-grid strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+
+.physics-note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.physics-note-list li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.physics-note-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ======================================================
+   COMBINATORICS — RESULT CARDS
+   ====================================================== */
+.combo-result-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.combo-result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-accent, #8b5cf6);
+  opacity: 0.6;
+}
+
+.combo-result-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.combo-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.combo-card-emoji {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.combo-card-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.combo-card-formula {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.combo-card-value {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  word-break: break-all;
+  letter-spacing: -0.5px;
+}
+
+.combo-card-placeholder {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* ======================================================
+   PHASE SPACE — CALCULATOR
+   ====================================================== */
+.phase-space-calculator {
+  background: rgba(6, 182, 212, 0.04);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.phase-space-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.phase-space-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.phase-space-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+}
+
+.phase-space-input-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.phase-space-arrow {
+  font-size: 1.5rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  font-weight: 300;
+}
+
+.phase-space-result-box {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(6, 182, 212, 0.06);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.phase-space-result-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.phase-space-result-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  font-family: 'Fira Code', monospace;
+  line-height: 1.1;
+  filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.4));
+}
+
+.phase-space-result-placeholder {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  font-family: 'Fira Code', monospace;
+}
+
+.phase-space-result-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-family: 'Fira Code', monospace;
+}
+
+.phase-axis-display {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.axis-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.axis-pos {
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #a78bfa;
+}
+
+.axis-mom {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: var(--accent-cyan);
+}
+
+.axis-per {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* ======================================================
+   ENSEMBLE CARDS
+   ====================================================== */
+.ensemble-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
+}
+
+.ensemble-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.ensemble-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--ens-color, rgba(255,255,255,0.15));
+}
+
+.ensemble-card.expanded {
+  border-color: var(--ens-color, rgba(255,255,255,0.2));
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ens-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ens-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ens-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ens-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.ens-expand-icon {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.ensemble-card:hover .ens-expand-icon {
+  color: var(--text-secondary);
+}
+
+.ens-fixed-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.ens-tag {
+  font-size: 0.7rem;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.ens-tag-fixed {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.ens-tag-exchange {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.ens-expanded-content {
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.ens-description {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.ens-math-box {
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ens-math-formula {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ens-math-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.ens-entropy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.ens-entropy code {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-secondary);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+}
+
+.ens-example {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.ens-example span {
+  color: var(--accent-amber);
+  font-weight: 600;
+}
+
+/* ======================================================
+   QUANTUM DISTRIBUTION
+   ====================================================== */
+.quantum-params-section {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 8px;
+}
+
+.quantum-params-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 16px;
+}
+
+.kt-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.kt-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.kt-value {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f472b6;
+}
+
+.kt-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Temperature Slider */
+.temp-slider-section {
+  margin-bottom: 12px;
+}
+
+.temp-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.temp-slider-value {
+  font-family: 'Fira Code', monospace;
+  color: #f472b6;
+  font-weight: 700;
+}
+
+.temp-slider {
+  width: 100%;
+  height: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.3), rgba(139, 92, 246, 0.5));
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.temp-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.temp-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(236, 72, 153, 0.7);
+}
+
+.temp-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  border: none;
+  cursor: pointer;
+}
+
+.temp-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.quantum-reset-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* Distribution result cards */
+.dist-result-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.dist-result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--dist-color, #8b5cf6);
+  opacity: 0.7;
+}
+
+.dist-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dist-particle-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.dist-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.dist-formula-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.dist-formula {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.dist-value-box {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.dist-value {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.dist-value-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.dist-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.dist-example-tag {
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+  font-weight: 500;
+}
+
+.dist-spin-info {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+  flex-wrap: wrap;
+}
+
+.dist-spin-info strong {
+  color: var(--text-secondary);
+}
+
+/* Quantum chart */
+.quantum-chart-section {
+  margin-top: 28px;
+}
+
+.quantum-chart-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.quantum-chart-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.quantum-chart-wrapper {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.quantum-tooltip {
+  background: rgba(15, 18, 36, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-lg);
+  min-width: 160px;
+}
+
+.quantum-tooltip-title {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.quantum-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  margin-top: 4px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* ======================================================
+   RESPONSIVE — Fisika Statistik
+   ====================================================== */
+@media (max-width: 768px) {
+  .physics-card { padding: 18px; }
+  .physics-header-stats { gap: 0; }
+  .phys-stat { padding: 0 14px; }
+  .bento-grid-3 { grid-template-columns: 1fr; }
+  .phase-space-input-row { flex-direction: column; }
+  .phase-space-arrow { transform: rotate(90deg); }
+  .physics-context-grid { grid-template-columns: 1fr; }
+}
+
